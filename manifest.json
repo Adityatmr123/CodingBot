@@ -9,8 +9,8 @@
   "host_permissions": ["<all_urls>"],
   "content_scripts": [
     {
-      "matches": ["https://*/*"],
-      "js": ["content.js"]
+      "matches": ["https://leetcode.com/problems/*"],
+      "js": ["contentScript.js"]
     }
   ],
   "permissions": ["webRequest", "storage"],
@@ -18,10 +18,13 @@
     "default_title": "Click Me",
     "default_popup": "index.html"
   },
+  "side_panel": {
+    "default_path": "index.html"
+  },
   "web_accessible_resources": [
-   {
-     "resources": ["contentScript.js"],
-     "matches": ["https://*/*"]
-   }
- ]
+    {
+      "resources": ["contentScript.js"],
+      "matches": ["https://*/*"]
+    }
+  ]
 }
