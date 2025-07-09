@@ -13,10 +13,9 @@
       "js": ["contentScript.js"]
     }
   ],
-  "permissions": ["webRequest", "storage"],
+  "permissions": ["webRequest", "storage", "sidePanel"],
   "action": {
-    "default_title": "Click Me",
-    "default_popup": "index.html"
+  	"default_title": "Click Me"
   },
   "side_panel": {
     "default_path": "index.html"

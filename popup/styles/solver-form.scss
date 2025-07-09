@@ -1,92 +1,59 @@
 .solver-form {
-	.solver-form__no-problem-state {
-		text-align: center;
-		.solver-form__no-problem-state__title {
-			color: rgb(11,72,107);
-			line-height: 24px;
-			font-size: 20px;
-			width: 250px;
-		}
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: 1rem;
+}
+
+.solver-form__chat {
+	flex-grow: 1;
+	overflow-y: auto;
+	margin-bottom: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.solver-form__chat-message {
+	padding: 0.5rem 1rem;
+	border-radius: 0.5rem;
+	max-width: 80%;
+}
+
+.solver-form__chat-message--user {
+	align-self: flex-end;
+	background-color: #e0e7ff;
+}
+
+.solver-form__chat-message--assistant {
+	align-self: flex-start;
+	background-color: #f3f4f6;
+}
+
+.solver-form__input-row {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+}
+
+.solver-form__input {
+	flex-grow: 1;
+	resize: none;
+	border-radius: 0.5rem;
+	border: 1px solid #ccc;
+	padding: 0.5rem;
+}
+
+.solver-form__send-btn {
+	padding: 0.5rem 1rem;
+	border-radius: 0.5rem;
+	border: none;
+	background-color: #4f8cff;
+	color: white;
+	cursor: pointer;
+
+	&:disabled {
+		background-color: #ccc;
+		cursor: not-allowed;
 	}
-
-	.solver-form__info-list{
-		padding-bottom: 10px;
-		border-bottom: 1px solid rgb(150,150,150);
-
-		.solver-form__info-item {
-			padding: 10px;
-			margin-left: 20px;
-			label {
-				color: black;
-				line-height: 20px;
-				font-size: 16px;
-				font-family: sans-serif;
-				margin-right: 10px;
-			}
-
-			span {
-				color: black;
-				line-height: 16px;
-				font-size: 14px;
-				font-family: sans-serif;
-
-			}
-		}
-	}
-
-	.solver-form__form-content {
-		width: 100%;
-		margin: 10px 0px;
-
-		.solver-form__submit {
-			font-size: 16px;
-			background-color: rgb(11,72,107);
-			color: white;
-			border: 1px solid rgb(121,189,154);
-			border-radius: 10px;
-			padding: 10px;
-			width: 100%;
-			margin-bottom: 10px;
-		}
-	}
-
-	.solver-form__solution {
-		.solver-form__solution-header {
-			color: rgb(11,72,107);
-			line-height: 24px;
-			font-size: 20px;
-			margin: 10px 0px;
-		}
-		textarea {
-			width: 100%;
-			height: 300px;
-			font-size: 14px;
-			border-radius: 3px;
-
-		}
-	}
-
-	.solver-form__loading {
-		padding: 20px;
-		img {
-			width: 100px;
-		}
-	}
-
-	.solver-form__options {
-		.solver-form__options-btn {
-			margin-top: 10px;
-			cursor: pointer;
-			margin-right: 10px;
-			font-size: 14px;
-			background-color: rgb(121,189,154);
-			color: white;
-			border: 1px solid rgb(121,189,154);
-			border-radius: 10px;
-			padding: 10px;
-			width: fit-content;
-			margin-bottom: 10px;
-		}	
-	}
-	
 }

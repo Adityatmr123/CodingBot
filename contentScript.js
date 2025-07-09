@@ -35,38 +35,42 @@ function extractAndSendLeetCodeProblem() {
     try {
         // Problem title
         const titleEl = document.querySelector('div[data-cy="question-title"]');
+        const titleText = titleEl ? titleEl.innerText : "Unknown Problem";
+
+        // Language
         const languageEl = document.querySelector('.ant-select-selection-selected-value, .ant-select-selection-item');
-        const codeEl = document.querySelector('.monaco-editor .view-lines');
-        const descriptionEl = document.querySelector('.question-content__JfgR, .content__u3I1.question-content__JfgR');
-
-        // Fallbacks for new LeetCode UI
-        let problemText = "";
-        if (descriptionEl) {
-            problemText = descriptionEl.innerText;
-        } else {
-            // Try to get from meta tags or other selectors if needed
-            const metaDesc = document.querySelector('meta[name="description"]');
-            if (metaDesc) problemText = metaDesc.content;
-        }
-
-        let languageText = "";
+        let languageText = "Unknown Language";
         if (languageEl) {
             languageText = languageEl.innerText || languageEl.textContent;
         }
 
-        let sourceCodeText = "";
-        // Try to get code from Monaco editor
-        if (window.monaco && window.monaco.editor && window.monaco.editor.getModels().length > 0) {
-            sourceCodeText = window.monaco.editor.getModels()[0].getValue();
-        } else if (codeEl) {
-            sourceCodeText = codeEl.innerText;
+        // Problem Description
+        const descriptionEl = document.querySelector('.question-content__JfgR, .content__u3I1.question-content__JfgR, div[class^="content-"]');
+        let problemText = "No problem statement found.";
+        if (descriptionEl) {
+            problemText = descriptionEl.innerText;
+        } else {
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) problemText = metaDesc.content;
         }
 
-        if (problemText && sourceCodeText) {
+        // Source Code
+        let sourceCodeText = "No source code found.";
+        if (window.monaco && window.monaco.editor && window.monaco.editor.getModels().length > 0) {
+            sourceCodeText = window.monaco.editor.getModels()[0].getValue();
+        } else {
+            const codeEl = document.querySelector('.monaco-editor .view-lines');
+            if (codeEl) {
+                sourceCodeText = codeEl.innerText;
+            }
+        }
+
+        // Only send if we have at least the problem description
+        if (problemText !== "No problem statement found.") {
             chrome.runtime.sendMessage({
-                type: "leetcode-solver-problem",
+                type: "set-problem-info",
                 data: {
-                    title: titleEl ? titleEl.innerText : "",
+                    titleText,
                     languageText,
                     problemText,
                     sourceCodeText
