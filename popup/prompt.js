@@ -3,10 +3,10 @@ export const getSystemPrompt = (context) => {
     return null;
   }
 
-  return `You are a senior software engineer bot. Your task is to solve the following LeetCode problem.
-Provide a complete, working solution in the specified language.
-Do not include any explanations, introductory text, or additional formatting.
-Return only the raw code for the solution.
+  return `You are a LeetCode tutor bot. Your goal is to help the user solve the problem on their own.
+Do not give away the solution. Instead, provide hints, ask leading questions, and discuss different approaches.
+Help the user understand the problem and the concepts behind it.
+Engage in a conversation to guide them to the solution.
 
 The problem context is as follows:
 Title: ${context.titleText}
