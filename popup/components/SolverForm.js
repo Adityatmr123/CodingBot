@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Switch from "react-switch";
 
 import pacman from "../../pacman.svg";
+import { getSystemPrompt } from "../prompt";
 
 import "../styles/solver-form.scss";
 
@@ -75,22 +76,12 @@ function SolverForm() {
 
 		// Always fetch the latest problem context before each LLM call
 		chrome.runtime.sendMessage({ type: "get-current-problem" }, async (context) => {
+			const systemPrompt = getSystemPrompt(context);
 			let problemContextMsg = null;
-			if (context && context.languageText && context.problemText && context.sourceCodeText) {
+			if (systemPrompt) {
 				problemContextMsg = {
 					role: "system",
-					content: `You are a senior software engineer bot. Your task is to solve the following LeetCode problem.
-Provide a complete, working solution in the specified language.
-Do not include any explanations, introductory text, or additional formatting.
-Return only the raw code for the solution.
-
-The problem context is as follows:
-Title: ${context.titleText}
-Language: ${context.languageText}
-Problem Statement: ${context.problemText}
-Source Code: ${context.sourceCodeText}
---- END CONTEXT ---
-`
+					content: systemPrompt
 				};
 			}
 

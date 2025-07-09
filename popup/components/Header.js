@@ -1,5 +1,3 @@
-import Settings from "./icons/Settings"
-
 import "../styles/header.scss";
 
 function Header() {
@@ -11,27 +9,15 @@ function Header() {
 			boxShadow: "0 2px 8px 0 rgba(79,140,255,0.06)"
 		}}>
 			<div className="header__brand flex align-center">
-				<img
-					src="https://leetcode.com/static/images/LeetCode_logo_rvs.png"
-					alt="LeetCode"
-					style={{
-						width: 32,
-						height: 32,
-						borderRadius: "8px",
-						marginRight: 12,
-						background: "#fff"
-					}}
-				/>
 				<span style={{
 					fontWeight: 700,
 					fontSize: 20,
 					color: "#fff",
 					letterSpacing: "0.5px"
 				}}>
-					LeetCode AI Solver
+					CodingBot
 				</span>
 			</div>
-			<Settings classes="settings__icon" />
 		</div>
 	)
 }
