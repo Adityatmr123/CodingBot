@@ -145,27 +145,6 @@ Source Code: ${context.sourceCodeText}
 
 	return (
 		<div className="solver-form">
-			<div className="solver-form__apikey">
-				<label htmlFor="openai-api-key"><b>OpenAI API Key:</b></label>
-				<input
-					id="openai-api-key"
-					type="password"
-					value={apiKey}
-					onChange={handleApiKeyChange}
-					placeholder="sk-..."
-				/>
-				<small>Enter your OpenAI API key. It is stored locally in your browser.</small>
-			</div>
-			<div className="solver-form__apikey">
-				<label htmlFor="openai-api-url"><b>API URL:</b></label>
-				<input
-					id="openai-api-url"
-					type="text"
-					value={apiUrl}
-					onChange={handleApiUrlChange}
-					placeholder="https://api.openai.com/v1/chat/completions"
-				/>
-			</div>
 			<div className="solver-form__chat">
 				{chatHistory.map((msg, idx) => (
 					<div
